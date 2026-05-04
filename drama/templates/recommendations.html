@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="/logout" class="btn">Logout</a>
+        <a href="/" class="btn">Back</a>
+    </div>
+
+    <!-- Genre Buttons -->
+   <div class="genre-buttons">
+    <a href="/recommendations?genre=Romance" class="btn">Romance</a>
+    <a href="/recommendations?genre=Action" class="btn">Action</a>
+    <a href="/recommendations?genre=Thriller" class="btn">Thriller</a>
+    <a href="/recommendations?genre=Drama" class="btn">Drama</a>
+    <a href="/recommendations?genre=Sci_Fic" class="btn">Sci-Fic</a>
+    <a href="/recommendations?genre=Fantasy" class="btn">Fantasy</a>
+    <a href="/recommendations?genre=Comedy" class="btn">Comedy</a>
+    <a href="/recommendations?genre=Horror" class="btn">Horror</a>
+    <a href="/recommendations?genre=medical" class="btn">Medical</a>
+    <a href="/watchlist" class="btn">My Watchlist ❤️</a>
+   </div>
+
+    <!-- Drama Row -->
+   <div class="drama-row">
+    {% for drama in dramas %}
+    <div class="drama-card">
+        <a href="/drama/{{ drama.name }}">
+        <img src="{{ url_for('static', filename='images/' + drama.image) }}">
+        <h3>{{ drama.name }}</h3>
+    </a>
+    
+    <a href="/add_to_watchlist/{{ drama.name }}" class="btn">❤️ Watchlist</a>
+</div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

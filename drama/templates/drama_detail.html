@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ drama.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation Buttons -->
+    <div style="padding:20px;">
+        <a href="/" class="btn">🏠 Home</a>
+    
+    </div>
+
+    <div style="text-align:center; padding:50px;">
+
+        <!-- Title -->
+        <h1>{{ drama.name }}</h1>
+
+        <!-- Image -->
+        <img src="{{ url_for('static', filename='images/' + drama.image) }}" 
+             style="width:300px; border-radius:10px;">
+
+        <!-- Description -->
+        <p style="max-width:600px; margin:20px auto;">
+            {{ drama.description }}
+        </p>
+
+        <!-- ⭐ Average Rating -->
+        <p>
+            ⭐ Average Rating:
+            {% if drama.ratings %}
+                {{ (drama.ratings | sum / drama.ratings | length) | round(1) }}
+            {% else %}
+                No ratings yet
+            {% endif %}
+        </p>
+
+        <!-- ⭐ Rate -->
+        <form method="POST" action="/rate/{{ drama.name }}">
+            <select name="rating">
+                <option value="5">5 ⭐</option>
+                <option value="4">4 ⭐</option>
+                <option value="3">3 ⭐</option>
+                <option value="2">2 ⭐</option>
+                <option value="1">1 ⭐</option>
+            </select>
+            <button type="submit">Submit Rating</button>
+        </form>
+
+        <!-- ❤️ Watchlist -->
+        <br><br>
+        <a href="/add_to_watchlist/{{ drama.name }}" class="btn">
+            ❤️ Add to Watchlist
+        </a>
+
+    </div>
+
+</body>
+</html>

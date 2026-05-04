@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drama Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <h2>🎬 Drama Recommender</h2>
+        <div>
+            <a href="/watchlist" class="btn">❤️ Watchlist</a>
+            <a href="/logout" class="btn">Logout</a>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Find Your Next Favorite Drama</h1>
+            <p>Discover Korean dramas based on your mood, explore trending shows, and build your personal watchlist.</p>
+
+            <!-- MOOD FORM -->
+            <form action="/recommend" method="POST">
+                <select name="mood">
+                    <option value="happy">😊 Happy</option>
+                    <option value="sad">😢 Sad</option>
+                    <option value="romantic">❤️ Romantic</option>
+                    <option value="stressed">😵 Stressed</option>
+                </select>
+                <button type="submit" class="btn">Recommend</button>
+            </form>
+
+            <br>
+
+            <!-- MAIN BUTTONS -->
+            <a href="/surprise" class="btn">🎲 Surprise Me</a>
+            <a href="/recommendations?genre=Romance" class="btn">Browse Genres</a>
+            <a href="/search" class="btn">🔍 Search</a>
+            <a href="/chatbot" class="btn">🤖 Chatbot</a>
+
+        </div>
+    </div>
+
+</body>
+</html>

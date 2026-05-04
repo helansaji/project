@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+</head>
+<body>
+
+<h2>Ask Me 🎭</h2>
+
+<input type="text" id="message" placeholder="Type mood..." required>
+<button onclick="sendMessage()">Send</button>
+
+<p id="response"></p>
+
+<br>
+<a href="/">⬅ Back to Home</a>
+
+<script>
+function sendMessage() {
+    let msg = document.getElementById("message").value;
+
+    fetch("/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "message=" + msg
+    })
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("response").innerText = data;
+    });
+}
+</script>
+
+</body>
+</html>

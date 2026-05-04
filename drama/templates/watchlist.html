@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Watchlist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <a href="/recommendations" class="btn">⬅ Back</a>
+
+    <h1 style="text-align:center;">My Watchlist ❤️</h1>
+
+    <div class="drama-row">
+        {% for drama in dramas %}
+    <div class="drama-card">
+    <img src="{{ url_for('static', filename='images/' + drama.image) }}">
+    <h3>{{ drama.name }}</h3>
+    <p>{{ drama.description }}</p>
+
+    <a href="/remove_from_watchlist/{{ drama.name }}" class="btn">❌ Remove</a>
+    </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
